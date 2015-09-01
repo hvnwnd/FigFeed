@@ -11,10 +11,12 @@ import UIKit
 class FFArticleVC: UIViewController {
 
     @IBOutlet weak var webview : UIWebView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let url = NSBundle.mainBundle().URLForResource("Test", withExtension:"html")
+        let myRequest = NSURLRequest(URL: url!);
+        webview.loadRequest(myRequest);
         // Do any additional setup after loading the view.
     }
 

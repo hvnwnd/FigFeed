@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--ListVC-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="FFListVC" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="FFListVC" customModule="FigFeed" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -16,25 +16,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dRu-kf-H2J">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dRu-kf-H2J">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TgI-23-4dJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BjZ-ex-I7l">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TgI-23-4dJ" id="Q8S-qx-rQd">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjZ-ex-I7l" id="XmF-j4-usO">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="0w1-AL-OyC" kind="showDetail" id="wu4-YS-xrN"/>
+                                            <segue destination="0w1-AL-OyC" kind="showDetail" identifier="push" id="hcv-29-64s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="MQ0-ae-pIA"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="RP5-CM-znq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dRu-kf-H2J" secondAttribute="bottom" id="GA5-7a-sU0"/>
+                            <constraint firstAttribute="trailing" secondItem="dRu-kf-H2J" secondAttribute="trailing" id="Njm-Vi-Tsr"/>
+                            <constraint firstItem="dRu-kf-H2J" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Tpa-Ve-3Po"/>
+                            <constraint firstItem="dRu-kf-H2J" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="X7B-SO-NFu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="dRu-kf-H2J" id="dke-iN-35w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,13 +64,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLd-4o-TXU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLd-4o-TXU">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tpf-kY-NkE" firstAttribute="top" secondItem="cLd-4o-TXU" secondAttribute="bottom" id="Gxf-iF-Xwy"/>
+                            <constraint firstItem="cLd-4o-TXU" firstAttribute="top" secondItem="F5e-mc-TXs" secondAttribute="bottom" id="SJj-2G-cxk"/>
+                            <constraint firstAttribute="trailing" secondItem="cLd-4o-TXU" secondAttribute="trailing" id="aff-c3-dD4"/>
+                            <constraint firstItem="cLd-4o-TXU" firstAttribute="leading" secondItem="jCz-D4-PGA" secondAttribute="leading" id="hGg-fo-FLo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webview" destination="cLd-4o-TXU" id="F7j-O0-c8u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8Y-4k-iLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
