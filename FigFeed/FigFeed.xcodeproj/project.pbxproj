@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184F49561B9659CF00C6F676 /* FFRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F49551B9659CF00C6F676 /* FFRequest.swift */; };
+		184F49581B965A8A00C6F676 /* FFRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F49571B965A8A00C6F676 /* FFRequestManager.swift */; };
 		7468E65F1B95F2DE00793E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468E65E1B95F2DE00793E37 /* AppDelegate.swift */; };
 		7468E6621B95F2DE00793E37 /* FigFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7468E6601B95F2DE00793E37 /* FigFeed.xcdatamodeld */; };
 		7468E6671B95F2DE00793E37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7468E6651B95F2DE00793E37 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		184F49551B9659CF00C6F676 /* FFRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFRequest.swift; sourceTree = "<group>"; };
+		184F49571B965A8A00C6F676 /* FFRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFRequestManager.swift; sourceTree = "<group>"; };
 		7468E6591B95F2DE00793E37 /* FigFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FigFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7468E65D1B95F2DE00793E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7468E65E1B95F2DE00793E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184F49541B9659C100C6F676 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				184F49551B9659CF00C6F676 /* FFRequest.swift */,
+				184F49571B965A8A00C6F676 /* FFRequestManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		7468E6501B95F2DD00793E37 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +96,7 @@
 		7468E65B1B95F2DE00793E37 /* FigFeed */ = {
 			isa = PBXGroup;
 			children = (
+				184F49541B9659C100C6F676 /* Network */,
 				7468E6851B95F53100793E37 /* ViewControllers */,
 				7468E65E1B95F2DE00793E37 /* AppDelegate.swift */,
 				7468E6651B95F2DE00793E37 /* Main.storyboard */,
@@ -233,8 +247,10 @@
 			files = (
 				7468E6621B95F2DE00793E37 /* FigFeed.xcdatamodeld in Sources */,
 				7468E68B1B95F64A00793E37 /* FFArticleVC.swift in Sources */,
+				184F49561B9659CF00C6F676 /* FFRequest.swift in Sources */,
 				7468E6891B95F53100793E37 /* FFListVC.swift in Sources */,
 				7468E65F1B95F2DE00793E37 /* AppDelegate.swift in Sources */,
+				184F49581B965A8A00C6F676 /* FFRequestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
