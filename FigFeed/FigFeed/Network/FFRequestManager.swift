@@ -34,6 +34,9 @@ class FFRequestManager {
                 article.setValue(articleDict["author"], forKey: "author")
                 article.setValue(articleDict["identifier"], forKey:"identifier")
                 article.setValue(articleDict["content"], forKey: "content")
+                article.setValue(articleDict["title"], forKey: "title")
+                article.setValue(articleDict["subtitle"], forKey: "subtitle")
+                
                 articles.addObject(article)
                 appDelegate.managedObjectContext?.insertObject(article)
             }

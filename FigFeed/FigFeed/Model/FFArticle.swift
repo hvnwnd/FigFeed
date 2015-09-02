@@ -8,11 +8,13 @@
 
 import Foundation
 import CoreData
-
+@objc(FFArticle)
 class FFArticle: NSManagedObject {
 
     @NSManaged var author: String
     @NSManaged var content: String
     @NSManaged var identifier: String
+    @NSManaged var title: String
+    @NSManaged var subtitle: String
 
 }

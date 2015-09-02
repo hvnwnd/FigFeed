@@ -4,8 +4,10 @@
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FFArticle" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="FFArticle" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

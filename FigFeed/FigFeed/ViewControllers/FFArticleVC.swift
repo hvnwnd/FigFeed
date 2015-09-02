@@ -11,12 +11,14 @@ import UIKit
 class FFArticleVC: UIViewController {
 
     @IBOutlet weak var webview : UIWebView!
-
+    var article : FFArticle!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = NSBundle.mainBundle().URLForResource("Test", withExtension:"html")
-        let myRequest = NSURLRequest(URL: url!);
-        webview.loadRequest(myRequest);
+//        let url = NSBundle.mainBundle().URLForResource("Test", withExtension:"html")
+//        let myRequest = NSURLRequest(URL: url!);
+//        webview.loadRequest(myRequest);
+        self.webview.loadHTMLString(article.content, baseURL: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -25,15 +27,5 @@ class FFArticleVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

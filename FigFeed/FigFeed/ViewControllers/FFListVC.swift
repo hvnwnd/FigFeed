@@ -11,11 +11,18 @@ import UIKit
 class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var items: [String] = ["We", "Heart", "Swift"]
+    var items = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "LeFigaro"
+        FFRequestManager.requestAllWithCompletionBlock { (feeds, error) -> Void in
+            self.items = feeds
+            self.tableView.reloadData()
+            println(self.items)
+        }
+
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
@@ -31,15 +38,30 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        cell.textLabel?.text = self.items[indexPath.row]
-        
+        let article = self.items[indexPath.row] as? FFArticle
+        cell.textLabel?.text = article?.title
+        cell.textLabel?.textColor = UIColor.blackColor()
+        println(article?.title)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("push", sender: AnyObject?())
-
+//        self.performSegueWithIdentifier("push", sender: indexPath.row)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("FFArticleVC") as! FFArticleVC
+        vc.article = items[indexPath.row] as! FFArticle
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        if (segue.destinationViewController.isKindOfClass(FFArticleVC))
+//        {
+//            let vc = segue.destinationViewController as! FFArticleVC
+////            vc.article = items[sender] as FFArticle
+//        }
+//    }
 
 }
 
