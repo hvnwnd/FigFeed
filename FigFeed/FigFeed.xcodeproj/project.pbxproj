@@ -11,6 +11,8 @@
 		184F495C1B979E9400C6F676 /* FigFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 184F495A1B979E9400C6F676 /* FigFeed.xcdatamodeld */; };
 		184F495E1B979EAD00C6F676 /* FFArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F495D1B979EAD00C6F676 /* FFArticle.swift */; };
 		184F49621B98E10300C6F676 /* FFArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F49611B98E10300C6F676 /* FFArticleCell.swift */; };
+		184F49641B98E4C300C6F676 /* FFHtmlGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F49631B98E4C300C6F676 /* FFHtmlGenerator.swift */; };
+		184F49681B98EFF700C6F676 /* FFArticle_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F49671B98EFF700C6F676 /* FFArticle_extension.swift */; };
 		7468E65F1B95F2DE00793E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468E65E1B95F2DE00793E37 /* AppDelegate.swift */; };
 		7468E6671B95F2DE00793E37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7468E6651B95F2DE00793E37 /* Main.storyboard */; };
 		7468E6691B95F2DE00793E37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7468E6681B95F2DE00793E37 /* Images.xcassets */; };
@@ -18,7 +20,6 @@
 		7468E6781B95F2DE00793E37 /* FigFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468E6771B95F2DE00793E37 /* FigFeedTests.swift */; };
 		7468E6891B95F53100793E37 /* FFListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468E6871B95F53100793E37 /* FFListVC.swift */; };
 		7468E68B1B95F64A00793E37 /* FFArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468E68A1B95F64A00793E37 /* FFArticleVC.swift */; };
-		7468E68D1B95F6E900793E37 /* Test.html in Resources */ = {isa = PBXBuildFile; fileRef = 7468E68C1B95F6E900793E37 /* Test.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		184F495B1B979E9400C6F676 /* FigFeed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FigFeed.xcdatamodel; sourceTree = "<group>"; };
 		184F495D1B979EAD00C6F676 /* FFArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFArticle.swift; sourceTree = "<group>"; };
 		184F49611B98E10300C6F676 /* FFArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFArticleCell.swift; sourceTree = "<group>"; };
+		184F49631B98E4C300C6F676 /* FFHtmlGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFHtmlGenerator.swift; sourceTree = "<group>"; };
+		184F49671B98EFF700C6F676 /* FFArticle_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFArticle_extension.swift; sourceTree = "<group>"; };
 		7468E6591B95F2DE00793E37 /* FigFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FigFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7468E65D1B95F2DE00793E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7468E65E1B95F2DE00793E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +50,6 @@
 		7468E6771B95F2DE00793E37 /* FigFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigFeedTests.swift; sourceTree = "<group>"; };
 		7468E6871B95F53100793E37 /* FFListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFListVC.swift; sourceTree = "<group>"; };
 		7468E68A1B95F64A00793E37 /* FFArticleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFArticleVC.swift; sourceTree = "<group>"; };
-		7468E68C1B95F6E900793E37 /* Test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Test.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				184F495D1B979EAD00C6F676 /* FFArticle.swift */,
 				184F495A1B979E9400C6F676 /* FigFeed.xcdatamodeld */,
+				184F49671B98EFF700C6F676 /* FFArticle_extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,7 +117,7 @@
 				7468E6681B95F2DE00793E37 /* Images.xcassets */,
 				7468E66A1B95F2DE00793E37 /* LaunchScreen.xib */,
 				7468E65C1B95F2DE00793E37 /* Supporting Files */,
-				7468E68C1B95F6E900793E37 /* Test.html */,
+				184F49631B98E4C300C6F676 /* FFHtmlGenerator.swift */,
 			);
 			path = FigFeed;
 			sourceTree = "<group>";
@@ -235,7 +238,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7468E68D1B95F6E900793E37 /* Test.html in Resources */,
 				7468E6671B95F2DE00793E37 /* Main.storyboard in Resources */,
 				7468E66C1B95F2DE00793E37 /* LaunchScreen.xib in Resources */,
 				7468E6691B95F2DE00793E37 /* Images.xcassets in Resources */,
@@ -256,6 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184F49641B98E4C300C6F676 /* FFHtmlGenerator.swift in Sources */,
+				184F49681B98EFF700C6F676 /* FFArticle_extension.swift in Sources */,
 				184F49621B98E10300C6F676 /* FFArticleCell.swift in Sources */,
 				184F495E1B979EAD00C6F676 /* FFArticle.swift in Sources */,
 				7468E68B1B95F64A00793E37 /* FFArticleVC.swift in Sources */,

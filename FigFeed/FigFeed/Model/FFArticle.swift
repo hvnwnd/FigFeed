@@ -2,12 +2,13 @@
 //  FFArticle.swift
 //  FigFeed
 //
-//  Created by Titi on 9/2/15.
+//  Created by Titi on 9/3/15.
 //  Copyright (c) 2015 funtek. All rights reserved.
 //
 
 import Foundation
 import CoreData
+
 @objc(FFArticle)
 class FFArticle: NSManagedObject {
 
@@ -16,5 +17,7 @@ class FFArticle: NSManagedObject {
     @NSManaged var identifier: String
     @NSManaged var title: String
     @NSManaged var subtitle: String
+    @NSManaged var imageUrl: String
+    @NSManaged var date: NSDate
 
 }

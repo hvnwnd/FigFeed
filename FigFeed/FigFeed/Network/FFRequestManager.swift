@@ -36,6 +36,12 @@ class FFRequestManager {
                 article.setValue(articleDict["content"], forKey: "content")
                 article.setValue(articleDict["title"], forKey: "title")
                 article.setValue(articleDict["subtitle"], forKey: "subtitle")
+                article.setValue(articleDict.valueForKeyPath("thumb.link") as! String, forKey: "imageUrl")
+
+                var dateString = articleDict["date"] as! NSNumber
+
+                let date = NSDate(timeIntervalSince1970: dateString.doubleValue)
+                article.setValue(date, forKey: "date")
                 
                 articles.addObject(article)
                 appDelegate.managedObjectContext?.insertObject(article)

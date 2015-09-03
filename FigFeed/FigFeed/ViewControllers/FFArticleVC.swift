@@ -15,7 +15,9 @@ class FFArticleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.webview.loadHTMLString(article.content, baseURL: nil)
+        
+        let htmlString = FFHtmlGenerator.generateHtml(article.title, imageUrl:article.articleImageUrl(), subtitle: article.subtitle, content: article.content)
+        self.webview.loadHTMLString(htmlString, baseURL: nil)
     }
 
     override func didReceiveMemoryWarning() {
