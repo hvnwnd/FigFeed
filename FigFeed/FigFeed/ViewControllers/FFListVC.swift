@@ -11,21 +11,31 @@ import UIKit
 class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl:UIRefreshControl!
+
     var items = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "LeFigaro"
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
+
+        refresh(nil)
+
+        tableView.registerClass(FFArticleCell.self, forCellReuseIdentifier: "articleCell")
+    }
+
+    func refresh(sender:AnyObject?){
         FFRequestManager.requestAllWithCompletionBlock { (feeds, error) -> Void in
             self.items = feeds
             self.tableView.reloadData()
-            println(self.items)
+            self.refreshControl.endRefreshing()
         }
-
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,7 +46,7 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return self.items.count;
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        var cell:FFArticleCell = self.tableView.dequeueReusableCellWithIdentifier("articleCell") as! FFArticleCell
         
         let article = self.items[indexPath.row] as? FFArticle
         cell.textLabel?.text = article?.title

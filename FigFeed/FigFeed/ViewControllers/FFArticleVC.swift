@@ -15,17 +15,11 @@ class FFArticleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let url = NSBundle.mainBundle().URLForResource("Test", withExtension:"html")
-//        let myRequest = NSURLRequest(URL: url!);
-//        webview.loadRequest(myRequest);
         self.webview.loadHTMLString(article.content, baseURL: nil)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 }
