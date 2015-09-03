@@ -26,7 +26,8 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         refresh(nil)
 
-        tableView.registerClass(FFArticleCell.self, forCellReuseIdentifier: "articleCell")
+        tableView.registerNib(UINib(nibName: "FFArticleCell", bundle: nil), forCellReuseIdentifier: "articleCell")
+//        tableView.registerClass(FFArticleCell.self, forCellReuseIdentifier: "articleCell")
     }
 
     func refresh(sender:AnyObject?){
@@ -49,8 +50,8 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var cell:FFArticleCell = self.tableView.dequeueReusableCellWithIdentifier("articleCell") as! FFArticleCell
         
         let article = self.items[indexPath.row] as? FFArticle
-        cell.textLabel?.text = article?.title
-        cell.textLabel?.textColor = UIColor.blackColor()
+        cell.titleLabel?.text = article?.title
+        cell.setImageUrl(article!.thumbnailUrl()!)
         println(article?.title)
         return cell
     }

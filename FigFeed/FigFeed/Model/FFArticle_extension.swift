@@ -9,11 +9,11 @@
 import Foundation
 
 extension FFArticle {
-    func thumbnailUrl() -> String {
-        return String(format:self.imageUrl, 200, 50)
+    func thumbnailUrl() -> String? {
+        return String(format:self.imageUrl, 100, 50)
     }
     
-    func articleImageUrl() -> String {
+    func articleImageUrl() -> String? {
         return String(format:self.imageUrl, 805, 453)
     }
 

@@ -16,7 +16,7 @@ class FFArticleVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let htmlString = FFHtmlGenerator.generateHtml(article.title, imageUrl:article.articleImageUrl(), subtitle: article.subtitle, content: article.content)
+        let htmlString = FFHtmlGenerator.generateHtml(article.title, imageUrl:article.articleImageUrl()!, subtitle: article.subtitle, content: article.content)
         self.webview.loadHTMLString(htmlString, baseURL: nil)
     }
 

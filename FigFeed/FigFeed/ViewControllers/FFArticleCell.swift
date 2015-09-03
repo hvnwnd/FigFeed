@@ -9,5 +9,12 @@
 import UIKit
 
 class FFArticleCell: UITableViewCell {
-
+    @IBOutlet var thumbnail: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    
+    func setImageUrl(urlString:String){
+        ImageLoader.sharedLoader.imageForUrl(urlString, completionHandler:{(image: UIImage?, url: String) in
+            self.thumbnail.image = image
+        })
+    }
 }
