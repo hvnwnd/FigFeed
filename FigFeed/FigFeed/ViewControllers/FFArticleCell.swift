@@ -12,9 +12,16 @@ class FFArticleCell: UITableViewCell {
     @IBOutlet var thumbnail: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     
-    func setImageUrl(urlString:String){
-        ImageLoader.sharedLoader.imageForUrl(urlString, completionHandler:{(image: UIImage?, url: String) in
-            self.thumbnail.image = image
-        })
+    private var kvoCtx = 0
+    override func awakeFromNib() {
+        thumbnail.addObserver(viewModel, forKeyPath:"image", options:NSKeyValueObservingOptions.New, context: kvoCtx)
     }
+    
+    var viewModel:FFArticleViewModel? {
+        didSet {
+            thumbnail.image = viewModel?.image
+            titleLabel.text = viewModel?.title
+        }
+    }
+    
 }

@@ -13,7 +13,7 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
 
-    var items = []
+    var articles = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +27,11 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         refresh(nil)
 
         tableView.registerNib(UINib(nibName: "FFArticleCell", bundle: nil), forCellReuseIdentifier: "articleCell")
-//        tableView.registerClass(FFArticleCell.self, forCellReuseIdentifier: "articleCell")
     }
 
     func refresh(sender:AnyObject?){
         FFRequestManager.requestAllWithCompletionBlock { (feeds, error) -> Void in
-            self.items = feeds
+            self.articles = feeds
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         }
@@ -44,15 +43,16 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
+        return self.articles.count;
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:FFArticleCell = self.tableView.dequeueReusableCellWithIdentifier("articleCell") as! FFArticleCell
+        var cell:FFArticleCell = tableView.dequeueReusableCellWithIdentifier("articleCell") as! FFArticleCell
         
-        let article = self.items[indexPath.row] as? FFArticle
-        cell.titleLabel?.text = article?.title
-        cell.setImageUrl(article!.thumbnailUrl()!)
-        println(article?.title)
+        let article = articles[indexPath.row] as! FFArticle
+ 
+        let articleViewModel = FFArticleViewModel(article:article)
+        cell.viewModel = articleViewModel
+
         return cell
     }
     
@@ -60,7 +60,7 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //        self.performSegueWithIdentifier("push", sender: indexPath.row)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("FFArticleVC") as! FFArticleVC
-        vc.article = items[indexPath.row] as! FFArticle
+        vc.article = articles[indexPath.row] as! FFArticle
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -11,10 +11,10 @@ import UIKit
 import CoreData
 
 class FFRequestManager {
-//    let urlString :String = "http://figaro.service.yagasp.com/articlesv6/w4ljb25vbWllVGVjaCAmIFdlYg==/"
+      static let urlString :String = "http://figaro.service.yagasp.com/articlesv6/w4ljb25vbWllVGVjaCAmIFdlYg==/"
 
     class func requestAllWithCompletionBlock(completionHandler handler: (NSArray!, NSError!) -> Void) {
-        let url = NSURL(string:"http://figaro.service.yagasp.com/articlesv6/w4ljb25vbWllVGVjaCAmIFdlYg==/")
+        let url = NSURL(string:urlString)
         let urlRequest = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             var error: NSError?
@@ -36,11 +36,11 @@ class FFRequestManager {
                 article.setValue(articleDict["content"], forKey: "content")
                 article.setValue(articleDict["title"], forKey: "title")
                 article.setValue(articleDict["subtitle"], forKey: "subtitle")
-                article.setValue(articleDict.valueForKeyPath("thumb.link") as! String, forKey: "imageUrl")
+                article.setValue(articleDict.valueForKeyPath("thumb.link") as? String, forKey: "imageUrl")
 
-                var dateString = articleDict["date"] as! NSNumber
+                var dateString = articleDict["date"] as? NSNumber
 
-                let date = NSDate(timeIntervalSince1970: dateString.doubleValue)
+                let date = NSDate(timeIntervalSince1970: dateString!.doubleValue)
                 article.setValue(date, forKey: "date")
                 
                 articles.addObject(article)
