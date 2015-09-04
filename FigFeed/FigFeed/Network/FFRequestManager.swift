@@ -11,8 +11,13 @@ import UIKit
 import CoreData
 
 class FFRequestManager {
-      static let urlString :String = "http://figaro.service.yagasp.com/articlesv6/w4ljb25vbWllVGVjaCAmIFdlYg==/"
-
+    static let urlString :String = "http://figaro.service.yagasp.com/articlesv6/w4ljb25vbWllVGVjaCAmIFdlYg==/"
+    var dataManager: FFDataManager
+    
+    init(dataManager:FFDataManager){
+        self.dataManager = dataManager
+    }
+    
     class func requestAllWithCompletionBlock(completionHandler handler: (NSArray!, NSError!) -> Void) {
         let url = NSURL(string:urlString)
         let urlRequest = NSURLRequest(URL: url!)

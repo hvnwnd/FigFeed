@@ -10,6 +10,7 @@ import Foundation
 
 extension FFArticle {
     func thumbnailUrl() -> String? {
+        println(self.imageUrl)
         return String(format:self.imageUrl, 100, 50)
     }
     

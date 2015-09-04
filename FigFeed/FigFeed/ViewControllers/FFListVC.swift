@@ -12,24 +12,32 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
-
     var articles = []
-
+    lazy var dataManager:FFDataManager = FFDataManager()
+    var requestManager:FFRequestManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "LeFigaro"
+        
+        
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: "loadNewData:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
 
-        refresh(nil)
+        loadCachedData()
+        loadNewData(nil)
 
         tableView.registerNib(UINib(nibName: "FFArticleCell", bundle: nil), forCellReuseIdentifier: "articleCell")
     }
 
-    func refresh(sender:AnyObject?){
+    func loadCachedData(){
+        articles = dataManager.fetch()!
+    }
+
+    func loadNewData(sender:AnyObject?){
         FFRequestManager.requestAllWithCompletionBlock { (feeds, error) -> Void in
             self.articles = feeds
             self.tableView.reloadData()
