@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
+
+protocol FFArticleViewModelDelegate {
+    func imageDidSet(viewModel:FFArticleViewModel)
+}
+
 class FFArticleViewModel {
     var title:String?
     var image:UIImage?
-    
+    var delegate:FFArticleViewModelDelegate! = nil
     
     init(article:FFArticle)
     {
@@ -20,6 +25,7 @@ class FFArticleViewModel {
         
         ImageLoader.sharedLoader.imageForUrl(article.thumbnailUrl()!, completionHandler:{(image: UIImage?, url: String) in
             self.image = image
+            self.delegate.imageDidSet(self)
         })
     }
 }
