@@ -20,13 +20,9 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         title = "LeFigaro"
+        addRefreshControl()
         
-        
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: "loadNewData:", forControlEvents: UIControlEvents.ValueChanged)
-        tableView.addSubview(refreshControl)
-
+        requestManager = FFRequestManager(dataManager: dataManager)
         loadCachedData()
         loadNewData(nil)
 
@@ -38,12 +34,20 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func loadNewData(sender:AnyObject?){
-        FFRequestManager.requestAllWithCompletionBlock { (feeds, error) -> Void in
+        requestManager?.requestAllWithCompletionBlock { (feeds, error) -> Void in
             self.articles = feeds
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         }
     }
+    
+    func addRefreshControl(){
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "loadNewData:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
