@@ -70,22 +70,17 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.performSegueWithIdentifier("push", sender: indexPath.row)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("FFArticleVC") as! FFArticleVC
-        vc.article = articles[indexPath.row] as! FFArticle
+        vc.article = articles[indexPath.row] as? FFArticle
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        if (segue.destinationViewController.isKindOfClass(FFArticleVC))
-//        {
-//            let vc = segue.destinationViewController as! FFArticleVC
-////            vc.article = items[sender] as FFArticle
-//        }
-//    }
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
+        cell.contentView.backgroundColor = (indexPath.row % 2) == 0 ? UIColor.whiteColor() : UIColor(white: 0.95, alpha: 1.0)
+    }
 
 }
 
