@@ -42,18 +42,22 @@ class FFDataManager {
     func fetch() -> [AnyObject]? {
         let error = NSErrorPointer()
         var fetchRequest = NSFetchRequest(entityName: "FFArticle")
-        var result = context.executeFetchRequest(fetchRequest, error: error)
-        
+        var result = context.executeFetchRequest(fetchRequest, error: error) as? [FFArticle]
+        saveFetechArticleId(result)
+        return result
+    }
+    
+    private func saveFetechArticleId(result:[FFArticle]?){
         var id = [String]()
-
-        if let x = result {
-            for article in x {
-                id.append(article.valueForKey("identifier") as! String)
+        
+        if let tmp = result {
+            for article in tmp {
+                id.append(article.identifier)
             }
         }
-
+        
         fetchedArticleId = id
-        return result
+
     }
     
     private func parseIdentifier(articleDict: NSDictionary) -> String{

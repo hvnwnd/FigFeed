@@ -17,6 +17,8 @@ protocol FFArticleViewModelDelegate {
 class FFArticleViewModel {
     var title:String?
     var image:UIImage?
+    var isVideo:Bool?
+    
     var delegate:FFArticleViewModelDelegate! = nil
     
     init(article:FFArticle)

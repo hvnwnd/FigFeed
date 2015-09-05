@@ -11,6 +11,7 @@ import UIKit
 class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var refreshControl:UIRefreshControl!
     var articles = []
     lazy var dataManager:FFDataManager = FFDataManager()
