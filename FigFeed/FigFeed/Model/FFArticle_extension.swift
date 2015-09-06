@@ -27,16 +27,15 @@ extension FFArticle {
         
         if let videos = articleDict["videos"] as? [AnyObject] {
             if videos.count > 0{
-                if let videoUrl = videos[0]["videoUrl"]!{
+                if let videoUrl: AnyObject = videos[0]["videoUrl"]!{
                     self.setValue(videoUrl, forKey:"videoUrl")
                 }
             }
         }
-        //articleDict["videos"]![0]["videoUrl"]
+
         var dateString = articleDict["date"] as? NSNumber
         let date = NSDate(timeIntervalSince1970: dateString!.doubleValue)
         self.setValue(date, forKey: "date")
-
     }
 
 }
