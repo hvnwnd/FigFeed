@@ -24,9 +24,11 @@ extension FFArticle {
         self.setValue(articleDict["title"], forKey: "title")
         self.setValue(articleDict["subtitle"], forKey: "subtitle")
         self.setValue(articleDict.valueForKeyPath("thumb.link") as? String, forKey: "imageUrl")
+//        if articleDict["videos"]
+//        self.setValue(articleDict.valueForKeyPath("videos.videoUrl")[0] as? String, forKey: "videoUrl")
+//        println(articleDict.valueForKeyPath("videos.videoUrl"))
         
         var dateString = articleDict["date"] as? NSNumber
-        
         let date = NSDate(timeIntervalSince1970: dateString!.doubleValue)
         self.setValue(date, forKey: "date")
 

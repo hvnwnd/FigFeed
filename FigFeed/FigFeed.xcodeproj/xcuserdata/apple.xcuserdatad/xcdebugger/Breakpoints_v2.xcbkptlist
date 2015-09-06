@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FigFeed/ViewControllers/FFArticleVC.swift"
-            timestampString = "462926416.220864"
+            filePath = "FigFeed/Network/FFRequestManager.swift"
+            timestampString = "463176922.040832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "requestAllWithCompletionBlock(completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FigFeed/Network/FFRequestManager.swift"
-            timestampString = "463176922.040832"
+            filePath = "FigFeed/ViewModel/FFArticleViewModel.swift"
+            timestampString = "463240712.786495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "requestAllWithCompletionBlock(completionHandler:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(article:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

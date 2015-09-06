@@ -13,10 +13,17 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m6S-MP-2Rv" id="5cv-PC-t01">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FhY-2N-zop">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="FhY-2N-zop">
                         <rect key="frame" x="5" y="5" width="100" height="49"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="2iF-C5-CtL"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="QAr-83-Et6">
+                        <rect key="frame" x="43" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="L28-K2-EdC"/>
+                            <constraint firstAttribute="height" constant="30" id="VmT-ry-LQA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyM-vg-C3n">
@@ -29,9 +36,11 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="eyM-vg-C3n" secondAttribute="trailing" id="8Jz-rq-Q17"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eyM-vg-C3n" secondAttribute="trailing" id="8r4-U1-PLh"/>
+                    <constraint firstItem="QAr-83-Et6" firstAttribute="leading" secondItem="5cv-PC-t01" secondAttribute="leadingMargin" constant="35" id="9hl-wv-b3P"/>
                     <constraint firstItem="eyM-vg-C3n" firstAttribute="top" secondItem="5cv-PC-t01" secondAttribute="topMargin" id="BqS-ep-EFU"/>
                     <constraint firstItem="eyM-vg-C3n" firstAttribute="leading" secondItem="FhY-2N-zop" secondAttribute="trailing" constant="8" id="HFf-Ej-6eD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="eyM-vg-C3n" secondAttribute="bottom" id="HvK-rR-Vgc"/>
+                    <constraint firstItem="FhY-2N-zop" firstAttribute="centerY" secondItem="QAr-83-Et6" secondAttribute="centerY" id="JKL-BN-lT9"/>
                     <constraint firstAttribute="bottom" secondItem="FhY-2N-zop" secondAttribute="bottom" constant="5" id="JQS-U2-BVD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="eyM-vg-C3n" secondAttribute="bottom" id="Kwv-PT-fAA"/>
                     <constraint firstItem="eyM-vg-C3n" firstAttribute="leading" secondItem="FhY-2N-zop" secondAttribute="trailing" id="LxM-i7-5CR"/>
@@ -44,20 +53,25 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="T7z-mQ-rhC"/>
                         <exclude reference="8Jz-rq-Q17"/>
+                        <exclude reference="8r4-U1-PLh"/>
+                        <exclude reference="BqS-ep-EFU"/>
                         <exclude reference="Kwv-PT-fAA"/>
                         <exclude reference="LxM-i7-5CR"/>
+                        <exclude reference="T7z-mQ-rhC"/>
                         <exclude reference="Wks-mm-Rxp"/>
-                        <exclude reference="BqS-ep-EFU"/>
-                        <exclude reference="8r4-U1-PLh"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="playImage" destination="QAr-83-Et6" id="xT2-48-yKD"/>
                 <outlet property="thumbnail" destination="FhY-2N-zop" id="Zwn-li-Ydb"/>
                 <outlet property="titleLabel" destination="eyM-vg-C3n" id="OtX-0W-OYU"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="placeholder" width="105" height="57"/>
+        <image name="play" width="30" height="30"/>
+    </resources>
 </document>

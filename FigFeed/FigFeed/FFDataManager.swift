@@ -47,6 +47,11 @@ class FFDataManager {
         return result
     }
     
+    func setHasReadForId(article:FFArticle){
+        article.hasRead = true;
+        appDelegate.saveContext()
+    }
+    
     private func saveFetechArticleId(result:[FFArticle]?){
         var id = [String]()
         

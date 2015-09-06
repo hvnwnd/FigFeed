@@ -8,6 +8,9 @@
 
 import UIKit
 
+let kFFListVCDefaultCellBgColor = UIColor.whiteColor()
+let kFFListVCDarkerCellBgColor = UIColor(white: 0.95, alpha: 1.0)
+
 class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +33,9 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.registerNib(UINib(nibName: "FFArticleCell", bundle: nil), forCellReuseIdentifier: "articleCell")
     }
 
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
     func loadCachedData(){
         articles = dataManager.fetch()!
     }
@@ -71,15 +77,17 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+
+        var article = articles[indexPath.row] as? FFArticle
+        dataManager.setHasReadForId(article!)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("FFArticleVC") as! FFArticleVC
-        vc.article = articles[indexPath.row] as? FFArticle
+        vc.article = article
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
-        cell.contentView.backgroundColor = (indexPath.row % 2) == 0 ? UIColor.whiteColor() : UIColor(white: 0.95, alpha: 1.0)
+        cell.contentView.backgroundColor = (indexPath.row % 2) == 0 ? kFFListVCDefaultCellBgColor : kFFListVCDarkerCellBgColor
     }
 
 }
