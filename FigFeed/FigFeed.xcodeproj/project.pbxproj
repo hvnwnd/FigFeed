@@ -114,6 +114,24 @@
 			path = ThirdParty;
 			sourceTree = "<group>";
 		};
+		188D84461B9CA9C60071FECF /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				188D843C1B9A411F0071FECF /* FFDataManager.swift */,
+			);
+			name = DAO;
+			sourceTree = "<group>";
+		};
+		188D84471B9CAA120071FECF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				184F49611B98E10300C6F676 /* FFArticleCell.swift */,
+				184F49691B9901C400C6F676 /* FFArticleCell.xib */,
+				188D84441B9C9D620071FECF /* FFFirstCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		7468E6501B95F2DD00793E37 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				184F496F1B9A3DBF00C6F676 /* ThirdParty */,
+				188D84461B9CA9C60071FECF /* DAO */,
 				184F496D1B9A3DBF00C6F676 /* Helper */,
 				7474FD3A1B99F4BB00F4763C /* ViewModel */,
 				184F49591B979E9400C6F676 /* Model */,
@@ -146,7 +165,6 @@
 				7468E6681B95F2DE00793E37 /* Images.xcassets */,
 				7468E66A1B95F2DE00793E37 /* LaunchScreen.xib */,
 				7468E65C1B95F2DE00793E37 /* Supporting Files */,
-				188D843C1B9A411F0071FECF /* FFDataManager.swift */,
 			);
 			path = FigFeed;
 			sourceTree = "<group>";
@@ -181,9 +199,7 @@
 			children = (
 				7468E6871B95F53100793E37 /* FFListVC.swift */,
 				7468E68A1B95F64A00793E37 /* FFArticleVC.swift */,
-				184F49611B98E10300C6F676 /* FFArticleCell.swift */,
-				184F49691B9901C400C6F676 /* FFArticleCell.xib */,
-				188D84441B9C9D620071FECF /* FFFirstCell.xib */,
+				188D84471B9CAA120071FECF /* Cell */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
