@@ -17,12 +17,15 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    weak var firstCell: FFArticleCell!
     
     var refreshControl:UIRefreshControl!
     var articles = []
     lazy var dataManager:FFDataManager = FFDataManager()
-    var requestManager:FFRequestManager?
+    var requestManager:FFRequestManager{
+        get {
+            return FFRequestManager(dataManager: dataManager)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +48,7 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func loadNewData(sender:AnyObject?){
-        requestManager = FFRequestManager(dataManager: dataManager)
-        requestManager?.requestAllWithCompletionBlock { (feeds, error) -> Void in
+        requestManager.requestAllWithCompletionBlock { (feeds, error) -> Void in
             self.articles = feeds
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
@@ -66,6 +68,9 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
 
+}
+// Table view Delegate 
+extension FFListVC {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.articles.count;

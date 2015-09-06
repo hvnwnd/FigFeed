@@ -37,7 +37,6 @@ class FFDataManager {
         }
         
         appDelegate.saveContext()
-
     }
     
     func fetch() -> [AnyObject]? {

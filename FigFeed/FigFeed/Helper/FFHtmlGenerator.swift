@@ -12,13 +12,11 @@ class FFHtmlGenerator {
     
     class func generateHtml(title: String, imageUrl:String, videoUrl:String?, subtitle: String,  content:String) -> String
     {
-        var html:String
+        var html:String = "<h1>\(title)</h1><img src='\(imageUrl)' width='360'><h3>\(subtitle)</h3>"
         if videoUrl != nil {
-            html = String(format: "<h1>%@</h1><img src='%@' width='360'><h3>%@</h3><video width='320' height='240' controls><source src='%@' type='video/mp4'></video>%@", title, imageUrl, subtitle, videoUrl!, content)
-
-        }else {
-            html = String(format: "<h1>%@</h1><img src='%@' width='360'><h3>%@</h3>%@", title, imageUrl, subtitle, content)
+            html += "<video width='320' height='240' controls><source src='\(videoUrl!)' type='video/mp4'></video>"
         }
+        html += "\(content)"
         return html
     }
 }
