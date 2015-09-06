@@ -25,12 +25,7 @@ class FFArticleViewModel {
     init(article:FFArticle)
     {
         title = article.title
-
-        if let url = article.valueForKey("videoUrl") {
-            isVideo = !url.isEmpty;
-
-        }
-        println(article.valueForKey("videoUrl"))
+        isVideo = (nil != article.valueForKey("videoUrl"))
         hasRead = article.hasRead.boolValue
         
         ImageLoader.sharedLoader.imageForUrl(article.thumbnailUrl()!, completionHandler:{(image: UIImage?, url: String) in

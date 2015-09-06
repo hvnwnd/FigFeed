@@ -20,6 +20,6 @@ class FFArticle: NSManagedObject {
     @NSManaged var subtitle: String
     @NSManaged var title: String
     @NSManaged var hasRead: NSNumber
-    @NSManaged var videoUrl: String
+    @NSManaged var videoUrl: String?
 
 }

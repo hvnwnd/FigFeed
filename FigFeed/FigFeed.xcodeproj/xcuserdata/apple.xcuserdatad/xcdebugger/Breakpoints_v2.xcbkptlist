@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FigFeed/ViewModel/FFArticleViewModel.swift"
-            timestampString = "463240712.786495"
+            filePath = "FigFeed/Model/FFArticle_extension.swift"
+            timestampString = "463247568.173613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "init(article:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "parseDict(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

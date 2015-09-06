@@ -16,7 +16,7 @@ class FFArticleCell: UITableViewCell, FFArticleViewModelDelegate {
     var viewModel:FFArticleViewModel? {
         didSet {
             titleLabel.text = viewModel?.title
-            println(viewModel?.isVideo)
+
             if let isVideo = viewModel?.isVideo {
                 playImage.hidden = !isVideo
             }
