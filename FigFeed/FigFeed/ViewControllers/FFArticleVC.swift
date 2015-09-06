@@ -11,14 +11,20 @@ import UIKit
 class FFArticleVC: UIViewController {
 
     @IBOutlet weak var webview : UIWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var article : FFArticle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let htmlString = FFHtmlGenerator.generateHtml(article.title, imageUrl:article.articleImageUrl()!, subtitle: article.subtitle, content: article.content)
-        self.webview.loadHTMLString(htmlString, baseURL: nil)
+        webview.loadHTMLString(htmlString, baseURL: nil)
     }
+
+    func webViewDidFinishLoad(webView: UIWebView){
+        activityIndicator.stopAnimating()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C8N-Vb-1Rg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--ListVC-->
@@ -24,19 +25,35 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="RP5-CM-znq"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DK6-TF-iS2">
+                                <rect key="frame" x="575" y="25" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dRu-kf-H2J" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="8mG-sY-TQN"/>
+                            <constraint firstAttribute="centerX" secondItem="DK6-TF-iS2" secondAttribute="centerX" id="AME-8q-pb9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DK6-TF-iS2" secondAttribute="trailing" constant="5" id="InL-C4-eVJ"/>
+                            <constraint firstItem="DK6-TF-iS2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="5" id="Jhx-iP-Wsq"/>
+                            <constraint firstAttribute="trailing" secondItem="DK6-TF-iS2" secondAttribute="trailing" constant="5" id="NXw-8g-Ssz"/>
                             <constraint firstAttribute="trailing" secondItem="dRu-kf-H2J" secondAttribute="trailing" id="Njm-Vi-Tsr"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dRu-kf-H2J" secondAttribute="bottom" id="Sgv-GZ-Eec"/>
                             <constraint firstItem="dRu-kf-H2J" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Tpa-Ve-3Po"/>
+                            <constraint firstAttribute="centerY" secondItem="DK6-TF-iS2" secondAttribute="centerY" id="YuI-qi-Jsp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AME-8q-pb9"/>
+                                <exclude reference="NXw-8g-Ssz"/>
+                                <exclude reference="YuI-qi-Jsp"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="eAJ-KR-YzV"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="DK6-TF-iS2" id="OrH-w9-FeH"/>
                         <outlet property="tableView" destination="dRu-kf-H2J" id="dke-iN-35w"/>
                     </connections>
                 </viewController>
@@ -59,25 +76,28 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLd-4o-TXU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0w1-AL-OyC" id="KoV-sU-KlH"/>
+                                </connections>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6Dj-5r-48T">
+                                <rect key="frame" x="559" y="5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Dj-5r-48T" secondAttribute="trailing" constant="5" id="1dc-I4-c9Z"/>
                             <constraint firstItem="Tpf-kY-NkE" firstAttribute="top" secondItem="cLd-4o-TXU" secondAttribute="bottom" id="Gxf-iF-Xwy"/>
                             <constraint firstItem="cLd-4o-TXU" firstAttribute="top" secondItem="F5e-mc-TXs" secondAttribute="bottom" id="J1f-VC-XAP"/>
-                            <constraint firstItem="cLd-4o-TXU" firstAttribute="top" secondItem="F5e-mc-TXs" secondAttribute="bottom" id="SJj-2G-cxk"/>
+                            <constraint firstItem="6Dj-5r-48T" firstAttribute="top" secondItem="F5e-mc-TXs" secondAttribute="bottom" constant="5" id="PIY-UN-nga"/>
                             <constraint firstAttribute="trailing" secondItem="cLd-4o-TXU" secondAttribute="trailing" id="aff-c3-dD4"/>
                             <constraint firstItem="cLd-4o-TXU" firstAttribute="leading" secondItem="jCz-D4-PGA" secondAttribute="leading" id="hGg-fo-FLo"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="SJj-2G-cxk"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="6Dj-5r-48T" id="A3M-iN-tFK"/>
                         <outlet property="webview" destination="cLd-4o-TXU" id="NhY-WJ-WcU"/>
                     </connections>
                 </viewController>

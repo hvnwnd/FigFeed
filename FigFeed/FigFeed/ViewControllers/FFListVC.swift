@@ -16,6 +16,7 @@ let kFFListVCFirstCellHeight:CGFloat = 200.0
 class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     weak var firstCell: FFArticleCell!
     
     var refreshControl:UIRefreshControl!
@@ -29,7 +30,6 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         title = "LeFigaro"
         addRefreshControl()
         
-        requestManager = FFRequestManager(dataManager: dataManager)
         loadCachedData()
         loadNewData(nil)
 
@@ -45,10 +45,12 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func loadNewData(sender:AnyObject?){
+        requestManager = FFRequestManager(dataManager: dataManager)
         requestManager?.requestAllWithCompletionBlock { (feeds, error) -> Void in
             self.articles = feeds
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
+            self.activityIndicator.stopAnimating()
         }
     }
     
