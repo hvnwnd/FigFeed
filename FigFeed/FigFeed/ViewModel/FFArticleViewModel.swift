@@ -19,16 +19,18 @@ class FFArticleViewModel {
     var image:UIImage?
     var isVideo:Bool = false
     var hasRead:Bool = false
+    var isFirst:Bool
     
     var delegate:FFArticleViewModelDelegate! = nil
     
-    init(article:FFArticle)
+    init(article:FFArticle, isFirstArticle:Bool)
     {
         title = article.title
+        isFirst = isFirstArticle
         isVideo = (nil != article.valueForKey("videoUrl"))
         hasRead = article.hasRead.boolValue
         
-        ImageLoader.sharedLoader.imageForUrl(article.thumbnailUrl()!, completionHandler:{(image: UIImage?, url: String) in
+        ImageLoader.sharedLoader.imageForUrl(isFirstArticle ? article.articleImageUrl()! : article.thumbnailUrl()!, completionHandler:{(image: UIImage?, url: String) in
             self.image = image
             self.delegate.imageDidSet(self)
         })

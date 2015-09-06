@@ -10,10 +10,13 @@ import UIKit
 
 let kFFListVCDefaultCellBgColor = UIColor.whiteColor()
 let kFFListVCDarkerCellBgColor = UIColor(white: 0.95, alpha: 1.0)
+let kFFListVCDefaultCellHeight:CGFloat = 80.0
+let kFFListVCFirstCellHeight:CGFloat = 200.0
 
 class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    weak var firstCell: FFArticleCell!
     
     var refreshControl:UIRefreshControl!
     var articles = []
@@ -31,6 +34,7 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         loadNewData(nil)
 
         tableView.registerNib(UINib(nibName: "FFArticleCell", bundle: nil), forCellReuseIdentifier: "articleCell")
+        tableView.registerNib(UINib(nibName: "FFFirstCell", bundle: nil), forCellReuseIdentifier: "firstCell")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,14 +68,29 @@ class FFListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.articles.count;
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:FFArticleCell = tableView.dequeueReusableCellWithIdentifier("articleCell") as! FFArticleCell
-        
-        let article = articles[indexPath.row] as! FFArticle
- 
-        let articleViewModel = FFArticleViewModel(article:article)
-        cell.viewModel = articleViewModel
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return kFFListVCFirstCellHeight
+        }
+        return kFFListVCDefaultCellHeight
+    }
 
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let article = articles[indexPath.row] as! FFArticle
+        var articleViewModel:FFArticleViewModel
+
+        var cell:FFArticleCell
+        
+        if indexPath.row == 0 {
+            articleViewModel = FFArticleViewModel(article: article, isFirstArticle: true)
+            cell = tableView.dequeueReusableCellWithIdentifier("firstCell") as! FFArticleCell
+        }else{
+            articleViewModel = FFArticleViewModel(article: article, isFirstArticle: false)
+            cell = tableView.dequeueReusableCellWithIdentifier("articleCell") as! FFArticleCell
+
+        }
+        cell.viewModel = articleViewModel
         return cell
     }
     
