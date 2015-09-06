@@ -27,11 +27,12 @@ class FFDataManager {
     func insert(articleList:NSArray){
         var articles = [FFArticle]()
         for articleDict in articleList {
-            let id = parseIdentifier(articleDict as! NSDictionary)
-            if !contains(fetchedArticleId, id) {
-                let article = NSEntityDescription.insertNewObjectForEntityForName("FFArticle", inManagedObjectContext: context) as! FFArticle;
-                article.parseDict(articleDict as! [String : AnyObject])
-                articles.append(article)
+            if let id = parseIdentifier(articleDict as! NSDictionary) {
+                if !contains(fetchedArticleId, id) {
+                    let article = NSEntityDescription.insertNewObjectForEntityForName("FFArticle", inManagedObjectContext: context) as! FFArticle;
+                    article.parseDict(articleDict as! [String : AnyObject])
+                    articles.append(article)
+                }
             }
         }
         
@@ -43,7 +44,7 @@ class FFDataManager {
         let error = NSErrorPointer()
         var fetchRequest = NSFetchRequest(entityName: "FFArticle")
         var result = context.executeFetchRequest(fetchRequest, error: error) as? [FFArticle]
-        saveFetechArticleId(result)
+        saveFetchedArticleId(result)
         return result
     }
     
@@ -52,26 +53,13 @@ class FFDataManager {
         appDelegate.saveContext()
     }
     
-    private func saveFetechArticleId(result:[FFArticle]?){
-        var id = [String]()
-        
-        if let tmp = result {
-            for article in tmp {
-                id.append(article.identifier)
-            }
-        }
-        
-        fetchedArticleId = id
-
+    private func saveFetchedArticleId(result:[FFArticle]?){
+        var id = result?.map({ return $0.identifier})
+        fetchedArticleId = id!
     }
     
-    private func parseIdentifier(articleDict: NSDictionary) -> String{
-        if let id = articleDict["_id"] as? String
-        {
-            return id
-        }else{
-            return ""
-        }
+    private func parseIdentifier(articleDict: NSDictionary) -> String?{
+        return articleDict["_id"] as? String
     }
 
 }
